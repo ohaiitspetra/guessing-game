@@ -30,15 +30,16 @@ while True:
             guess = None
             print("Please guess a number in the appropriate range.")
 
-        if guess == secret:
-            level += 1
-            lives += 1
-            values += difficulty
-            print(f"You got it! Moving on to level {level}. Here's an extra life to help you along.")
-
         else:
-            print("Nope, lose a life!")
-            lives -= 1
+            if guess == secret:
+                level += 1
+                lives += 1
+                values += difficulty
+                print(f"You got it! Moving on to level {level}. Here's an extra life to help you along.")
+
+            else:
+                print("Nope, lose a life!")
+                lives -= 1
 
     print("GAME OVER\n")
     again = input("Play again? [Y]/n:").lower()
