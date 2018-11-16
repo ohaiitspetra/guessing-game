@@ -1,47 +1,29 @@
-#!/usr/bin/env python3
+import random
 
-# Guessing Game Template
-# Mr. Enrico
-# NBHS Intro to Engineering
+def mini_game(a,b):
+health_points=3
+guess= input("Guess the number bimbo:")
+secret_number= random.randint(a,b)
+if guess==secret_number:
+  print("Yay you guessed it!")
+  print("Level 2!")
+elif health_points>0:
+  print("haha stupid, you lost a life :)))")
+  lives = lives-1
+  secret_2= random.randint(a,b+5)
+  guess_2= input("Round 2!")
 
-from random import randint
 
-# Main loop
-while True:
+  if guess_2==secret_2:
+    print("Two in a row!")
+    print ("Level 3!")
+  else:
+    print("Who are you again?")
+    secret_3= (a,b+5)
+    guess_3= ("Round 3!")
+  
+    if guess==secret_3:
+      print("YOU WON!!! HAVE A COOKIE")
+else: health_points == 0:
+  print("Game over")
 
-    # Initialize game variables at the start of each new game
-    lives = 3
-    values = 10
-    level = 1
-    # Number to expand range by each level
-    difficulty = 5
-
-    # Choose a secret value
-    secret = randint(1, values)
-
-    # Guess loop
-    while lives > 0:
-        print(f"Lives remaining: {lives}\n")
-        try:
-            guess = int(input(f"I'm thinking of a number between 1 and {values}, what is it? "))
-            if guess not in range(1, values+1):
-                raise ValueError
-        except ValueError:
-            guess = None
-            print("Please guess a number in the appropriate range.")
-
-        else:
-            if guess == secret:
-                level += 1
-                lives += 1
-                values += difficulty
-                print(f"You got it! Moving on to level {level}. Here's an extra life to help you along.")
-
-            else:
-                print("Nope, lose a life!")
-                lives -= 1
-
-    print("GAME OVER\n")
-    again = input("Play again? [Y]/n:").lower()
-    if again == "n":
-        break
